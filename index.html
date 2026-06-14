@@ -23,16 +23,18 @@
     .nav-links a{color:var(--gray);text-decoration:none;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
     .nav-links a:hover{color:var(--rose)}
 
-    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 420px;padding-top:80px}
+    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 400px;padding-top:80px;align-items:center}
     .hero-left{display:flex;flex-direction:column;justify-content:center;padding:4rem;position:relative}
     .hero-left::before{content:'';position:absolute;left:4rem;top:50%;transform:translateY(-50%);width:2px;height:120px;background:linear-gradient(to bottom,transparent,var(--rose),transparent)}
     .hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.5rem,6vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;margin-left:1.5rem;margin-bottom:1.5rem;color:var(--white)}
     .hero-roles{display:flex;flex-direction:column;gap:.2rem;margin-left:1.5rem;margin-bottom:2.5rem}
     .hero-role{font-size:1.05rem;color:var(--rose-light);font-weight:300}
     .hero-cta{display:flex;gap:1rem;margin-left:1.5rem;flex-wrap:wrap}
-    .hero-photo{position:relative;overflow:hidden}
-    .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 8%;display:block}
-    .hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,var(--black) 0%,transparent 35%),linear-gradient(to top,var(--black) 0%,transparent 15%)}
+    .hero-photo{display:flex;align-items:center;justify-content:center;padding:3rem 3rem 3rem 1rem}
+    .hero-photo-frame{position:relative;width:300px;flex-shrink:0}
+    .hero-photo-frame::before{content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;border:1px solid rgba(216,167,167,.25);border-radius:4px;pointer-events:none;z-index:1}
+    .hero-photo-frame::after{content:'';position:absolute;top:10px;left:10px;right:-10px;bottom:-10px;border:1px solid rgba(216,167,167,.1);border-radius:4px;pointer-events:none;z-index:0}
+    .hero-photo-frame img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center 5%;display:block;border-radius:4px;filter:grayscale(10%) contrast(1.03);position:relative;z-index:2}
 
     .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;border-radius:4px;font-size:.82rem;font-weight:500;letter-spacing:.04em;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:'Inter',sans-serif}
     .btn-rose{background:var(--rose);color:#0B0B0B}.btn-rose:hover{background:var(--rose-light)}
@@ -102,10 +104,10 @@
 
     @media(max-width:900px){
       nav{padding:1.25rem 1.5rem}.nav-links{gap:1.5rem}
-      .hero{grid-template-columns:1fr;min-height:auto}
-      .hero-photo{height:75vw;max-height:480px;order:-1}
-      .hero-photo img{object-position:center 5%}
-      .hero-left{padding:3rem 1.5rem}
+      .hero{grid-template-columns:1fr;min-height:auto;padding-bottom:3rem}
+      .hero-photo{padding:2rem 1.5rem;order:-1}
+      .hero-photo-frame{width:220px;margin:0 auto}
+      .hero-left{padding:2rem 1.5rem}
       .hero-left::before{display:none}
       .hero-name,.hero-roles,.hero-cta{margin-left:0}
       #projects{padding:4rem 1.5rem}
@@ -147,8 +149,9 @@
     </div>
   </div>
   <div class="hero-photo">
-    <!-- FOTO: coloca o arquivo da foto na mesma pasta e troca o nome abaixo -->
-    <img src="images/foto.png" alt="Beatriz Leal"/>
+    <div class="hero-photo-frame">
+      <img src="images/foto.png" alt="Beatriz Leal"/>
+    </div>
   </div>
 </section>
 
