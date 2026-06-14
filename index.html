@@ -99,7 +99,7 @@
     footer{padding:4rem 4rem;border-top:1px solid rgba(216,167,167,.08)}
     .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:flex-end}
     .footer-links{display:flex;gap:1.5rem;align-items:center}
-    .footer-link{color:var(--gray);text-decoration:none;font-size:.85rem;transition:color .2s}
+    .footer-link{color:var(--gray);text-decoration:none;font-size:.85rem;transition:color .2s;background:none;border:none;padding:0;cursor:pointer;font-family:'Inter',sans-serif}
     .footer-link:hover{color:var(--white)}
     .footer-copy{max-width:1100px;margin:2rem auto 0;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);display:flex;justify-content:space-between;font-size:.72rem;color:rgba(255,255,255,.2)}
 
@@ -148,7 +148,7 @@
     <div class="hero-cta">
       <a href="https://www.linkedin.com/in/beatriz-costa-leal/" class="btn btn-rose" target="_blank">LinkedIn <span class="ext-arrow">↗</span></a>
       <a href="https://github.com/BeatrizCoder" class="btn btn-github" target="_blank">GitHub <span class="ext-arrow">↗</span></a>
-      <a href="mailto:biagenai24@outlook.com" class="btn btn-rose">Email <span class="ext-arrow">↗</span></a>
+      <button class="btn btn-rose" onclick="copyEmail(this)">biagenai24@outlook.com</button>
       <a href="#projects" class="btn btn-outline">View Projects</a>
     </div>
   </div>
@@ -320,7 +320,7 @@
     <div class="footer-links">
       <a href="https://www.linkedin.com/in/beatriz-costa-leal/" class="footer-link" target="_blank">LinkedIn <span class="ext-arrow">↗</span></a>
       <a href="https://github.com/BeatrizCoder" class="footer-link" target="_blank">GitHub <span class="ext-arrow">↗</span></a>
-      <a href="mailto:biagenai24@outlook.com" class="footer-link">Email <span class="ext-arrow">↗</span></a>
+      <button class="footer-link" onclick="copyEmail(this)">biagenai24@outlook.com</button>
     </div>
   </div>
   <div class="footer-copy">
@@ -373,6 +373,14 @@
       });
     }
   });
+
+  function copyEmail(btn) {
+    navigator.clipboard.writeText('biagenai24@outlook.com').then(function() {
+      var original = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(function() { btn.textContent = original; }, 2000);
+    });
+  }
 
   (function() {
     var hash = window.location.hash.replace('#', '');
